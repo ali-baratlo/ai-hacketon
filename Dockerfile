@@ -1,19 +1,15 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.10-slim
 
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file into the container at /app
-COPY requirements.txt .
+COPY . /app
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
-RUN pip install --no-cache-dir hazm --no-dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
-# Copy the rest of the application's code into the container at /app
-COPY . .
+# نصب PyTorch CPU
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
-# Run main.py when the container launches
+ENV HF_HOME=/app/.cache/huggingface
+
 CMD ["python", "main.py"]
