@@ -1,0 +1,767 @@
+[
+    {
+        "restaurant_id": 1,
+        "restaurant_name": "پیتزا شب تهران شعبه ونک",
+        "sentiment_summary": {
+            "total_reviews": 30,
+            "positive_percent": 63,
+            "negative_percent": 36,
+            "neutral_percent": 0
+        },
+        "top_themes": {
+            "top_positive_themes": [
+                "عالی",
+                "بود",
+                "خوب"
+            ],
+            "top_negative_themes": [
+                "بود",
+                "خیلی",
+                "سس"
+            ]
+        },
+        "aspect_based_sentiment": {
+            "taste": 0.8,
+            "delivery": 0.67,
+            "packaging": 0.5,
+            "price": 0.0,
+            "portion": 0.5,
+            "service": 0.67
+        },
+        "ai_summary": "عالی, بود, خوب",
+        "time_trends": [
+            {
+                "date": "2024-11-20",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-21",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-22",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-23",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-24",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-25",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-26",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-27",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-28",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-29",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-30",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-12-01",
+                "positive": 4,
+                "negative": 0
+            },
+            {
+                "date": "2024-12-02",
+                "positive": 2,
+                "negative": 2
+            },
+            {
+                "date": "2024-12-03",
+                "positive": 3,
+                "negative": 2
+            },
+            {
+                "date": "2024-12-04",
+                "positive": 5,
+                "negative": 1
+            }
+        ],
+        "alerts": [],
+        "word_cloud_data": [
+            {
+                "word": "عالی",
+                "count": 6
+            },
+            {
+                "word": "خوب",
+                "count": 4
+            },
+            {
+                "word": "غذا",
+                "count": 4
+            },
+            {
+                "word": "طعم",
+                "count": 3
+            },
+            {
+                "word": "سرد",
+                "count": 3
+            },
+            {
+                "word": "پیتزا",
+                "count": 3
+            },
+            {
+                "word": "کیفیت",
+                "count": 3
+            },
+            {
+                "word": "پیک",
+                "count": 3
+            },
+            {
+                "word": "کمی",
+                "count": 3
+            },
+            {
+                "word": "رسید",
+                "count": 2
+            }
+        ],
+        "health_score": 70
+    },
+    {
+        "restaurant_id": 2,
+        "restaurant_name": "کباب‌سرای سنتی عمو حسن",
+        "sentiment_summary": {
+            "total_reviews": 30,
+            "positive_percent": 60,
+            "negative_percent": 40,
+            "neutral_percent": 0
+        },
+        "top_themes": {
+            "top_positive_themes": [
+                "عالی",
+                "بود",
+                "کباب"
+            ],
+            "top_negative_themes": [
+                "خوب",
+                "غذا",
+                "بود"
+            ]
+        },
+        "aspect_based_sentiment": {
+            "taste": 0.33,
+            "delivery": 0.38,
+            "packaging": 1.0,
+            "price": 0.0,
+            "portion": 0.33,
+            "service": 1.0
+        },
+        "ai_summary": "خوب, غذا, بود",
+        "time_trends": [
+            {
+                "date": "2024-11-20",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-21",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-22",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-23",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-24",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-25",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-26",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-27",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-28",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-29",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-30",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-12-01",
+                "positive": 1,
+                "negative": 3
+            },
+            {
+                "date": "2024-12-02",
+                "positive": 3,
+                "negative": 1
+            },
+            {
+                "date": "2024-12-03",
+                "positive": 3,
+                "negative": 2
+            },
+            {
+                "date": "2024-12-04",
+                "positive": 3,
+                "negative": 3
+            }
+        ],
+        "alerts": [],
+        "word_cloud_data": [
+            {
+                "word": "عالی",
+                "count": 6
+            },
+            {
+                "word": "کباب",
+                "count": 5
+            },
+            {
+                "word": "خوب",
+                "count": 5
+            },
+            {
+                "word": "غذا",
+                "count": 4
+            },
+            {
+                "word": "بهترین",
+                "count": 2
+            },
+            {
+                "word": "سفارش",
+                "count": 2
+            },
+            {
+                "word": "پیک",
+                "count": 2
+            },
+            {
+                "word": "رسید",
+                "count": 2
+            },
+            {
+                "word": "دیر",
+                "count": 2
+            },
+            {
+                "word": "کمی",
+                "count": 2
+            }
+        ],
+        "health_score": 65
+    },
+    {
+        "restaurant_id": 3,
+        "restaurant_name": "برگرلند پاسداران",
+        "sentiment_summary": {
+            "total_reviews": 30,
+            "positive_percent": 63,
+            "negative_percent": 36,
+            "neutral_percent": 0
+        },
+        "top_themes": {
+            "top_positive_themes": [
+                "عالی",
+                "خوب",
+                "طعم"
+            ],
+            "top_negative_themes": [
+                "بود",
+                "سرد",
+                "برگر"
+            ]
+        },
+        "aspect_based_sentiment": {
+            "taste": 1.0,
+            "delivery": 0.5,
+            "packaging": 0.0,
+            "price": 0.0,
+            "portion": 0.0,
+            "service": 0.67
+        },
+        "ai_summary": "عالی, خوب, طعم",
+        "time_trends": [
+            {
+                "date": "2024-11-20",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-21",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-22",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-23",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-24",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-25",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-26",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-27",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-28",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-29",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-30",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-12-01",
+                "positive": 4,
+                "negative": 0
+            },
+            {
+                "date": "2024-12-02",
+                "positive": 3,
+                "negative": 1
+            },
+            {
+                "date": "2024-12-03",
+                "positive": 2,
+                "negative": 3
+            },
+            {
+                "date": "2024-12-04",
+                "positive": 4,
+                "negative": 2
+            }
+        ],
+        "alerts": [
+            {
+                "type": "repeated_issue",
+                "message": "The issue 'سرد' appeared in 3 negative reviews."
+            }
+        ],
+        "word_cloud_data": [
+            {
+                "word": "برگر",
+                "count": 5
+            },
+            {
+                "word": "عالی",
+                "count": 5
+            },
+            {
+                "word": "خوب",
+                "count": 5
+            },
+            {
+                "word": "سرد",
+                "count": 4
+            },
+            {
+                "word": "طعم",
+                "count": 3
+            },
+            {
+                "word": "سفارش",
+                "count": 3
+            },
+            {
+                "word": "دوبار",
+                "count": 2
+            },
+            {
+                "word": "داغ",
+                "count": 2
+            },
+            {
+                "word": "متوسط",
+                "count": 2
+            },
+            {
+                "word": "کیفیت",
+                "count": 2
+            }
+        ],
+        "health_score": 66
+    },
+    {
+        "restaurant_id": 4,
+        "restaurant_name": "فست‌فود میرداماد",
+        "sentiment_summary": {
+            "total_reviews": 30,
+            "positive_percent": 66,
+            "negative_percent": 33,
+            "neutral_percent": 0
+        },
+        "top_themes": {
+            "top_positive_themes": [
+                "عالی",
+                "خوب",
+                "بود"
+            ],
+            "top_negative_themes": [
+                "بود",
+                "تاخیر",
+                "روغن"
+            ]
+        },
+        "aspect_based_sentiment": {
+            "taste": 1.0,
+            "delivery": 0.78,
+            "packaging": 0.0,
+            "price": 0.5,
+            "portion": 0.33,
+            "service": 1.0
+        },
+        "ai_summary": "بود, تاخیر, روغن - روند اخیر (2024-12-04)",
+        "time_trends": [
+            {
+                "date": "2024-11-20",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-21",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-22",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-23",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-24",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-25",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-26",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-27",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-28",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-29",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-30",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-12-01",
+                "positive": 3,
+                "negative": 1
+            },
+            {
+                "date": "2024-12-02",
+                "positive": 1,
+                "negative": 3
+            },
+            {
+                "date": "2024-12-03",
+                "positive": 5,
+                "negative": 0
+            },
+            {
+                "date": "2024-12-04",
+                "positive": 4,
+                "negative": 2
+            }
+        ],
+        "alerts": [],
+        "word_cloud_data": [
+            {
+                "word": "خوب",
+                "count": 5
+            },
+            {
+                "word": "عالی",
+                "count": 4
+            },
+            {
+                "word": "سرد",
+                "count": 3
+            },
+            {
+                "word": "داغ",
+                "count": 3
+            },
+            {
+                "word": "ساندویچ",
+                "count": 2
+            },
+            {
+                "word": "غذا",
+                "count": 2
+            },
+            {
+                "word": "متوسط",
+                "count": 2
+            },
+            {
+                "word": "بد",
+                "count": 2
+            },
+            {
+                "word": "پیک",
+                "count": 2
+            },
+            {
+                "word": "کمی",
+                "count": 2
+            }
+        ],
+        "health_score": 75
+    },
+    {
+        "restaurant_id": 5,
+        "restaurant_name": "سوشی مستر نیاوران",
+        "sentiment_summary": {
+            "total_reviews": 30,
+            "positive_percent": 73,
+            "negative_percent": 26,
+            "neutral_percent": 0
+        },
+        "top_themes": {
+            "top_positive_themes": [
+                "عالی",
+                "بود",
+                "تازه"
+            ],
+            "top_negative_themes": [
+                "غذا",
+                "بود",
+                "تاخیر"
+            ]
+        },
+        "aspect_based_sentiment": {
+            "taste": 1.0,
+            "delivery": 0.5,
+            "packaging": 1.0,
+            "price": 0.5,
+            "portion": 0.0,
+            "service": 1.0
+        },
+        "ai_summary": "غذا, بود, تاخیر - روند اخیر (2024-12-04): 5 نظر مثبت در مقابل 1 نظر منفی.",
+        "time_trends": [
+            {
+                "date": "2024-11-20",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-21",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-22",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-23",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-24",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-25",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-26",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-27",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-11-28",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-29",
+                "positive": 1,
+                "negative": 0
+            },
+            {
+                "date": "2024-11-30",
+                "positive": 0,
+                "negative": 1
+            },
+            {
+                "date": "2024-12-01",
+                "positive": 2,
+                "negative": 2
+            },
+            {
+                "date": "2024-12-02",
+                "positive": 4,
+                "negative": 0
+            },
+            {
+                "date": "2024-12-03",
+                "positive": 3,
+                "negative": 2
+            },
+            {
+                "date": "2024-12-04",
+                "positive": 5,
+                "negative": 1
+            }
+        ],
+        "alerts": [],
+        "word_cloud_data": [
+            {
+                "word": "عالی",
+                "count": 6
+            },
+            {
+                "word": "سوشی",
+                "count": 4
+            },
+            {
+                "word": "تازه",
+                "count": 4
+            },
+            {
+                "word": "کیفیت",
+                "count": 4
+            },
+            {
+                "word": "بالا",
+                "count": 3
+            },
+            {
+                "word": "خوب",
+                "count": 3
+            },
+            {
+                "word": "بسته‌بندی",
+                "count": 2
+            },
+            {
+                "word": "خوشمزه",
+                "count": 2
+            },
+            {
+                "word": "غذا",
+                "count": 2
+            },
+            {
+                "word": "قیمت",
+                "count": 2
+            }
+        ],
+        "health_score": 74
+    }
+]
