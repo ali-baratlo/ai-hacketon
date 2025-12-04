@@ -21,36 +21,49 @@ This project is a prototype AI pipeline for analyzing restaurant reviews in Pers
 
 ## How to Run
 
-This project is containerized using Docker, so you can run it without having to manually install any dependencies.
+This project is containerized using Docker for easy setup and execution.
 
 ### Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/) installed on your machine.
+- [Python 3.8+](https://www.python.org/downloads/) for the local setup.
 
-### Steps
+### Option 1: Running with Docker (Recommended)
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
+1.  **Build the Docker image:**
+    ```bash
+    docker build -t persian-review-analyzer .
+    ```
 
-2. **Build the Docker image:**
-   ```bash
-   docker build -t persian-review-analyzer .
-   ```
+2.  **Run the Docker container:**
+    ```bash
+    docker run --rm -p 8000:8000 persian-review-analyzer
+    ```
+    - The `-p 8000:8000` flag maps the container's port 8000 to your local machine's port 8000.
 
-3. **Run the Docker container:**
-   ```bash
-   docker run --rm -v $(pwd)/data:/app/data persian-review-analyzer
-   ```
+3.  **View the Dashboard:**
+    Open your web browser and navigate to [http://localhost:8000](http://localhost:8000). The dashboard will be available after the analysis is complete.
 
-   This command will:
-   - Run the container and automatically remove it when it's done (`--rm`).
-   - Mount the `data` directory from your local machine into the container's `/app/data` directory (`-v $(pwd)/data:/app/data`), so the script can read the input file and you can access the output file.
+### Option 2: Running Locally
 
-4. **View the output:**
-   After the script finishes, the results will be saved in `data/output.json`.
+1.  **Create a virtual environment:**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+
+2.  **Install the dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Run the script:**
+    ```bash
+    python main.py
+    ```
+
+4.  **View the Dashboard:**
+    Once the script is running, open your web browser and navigate to [http://localhost:8000](http://localhost:8000).
 
 ## Input Data
 
@@ -74,15 +87,15 @@ The pipeline reads a JSON file located at `data/restaurants.json`. This file con
 - `comment_text`: The text of the review in Persian.
 - `created_at`: The timestamp of when the review was created.
 
-## Output Data
+## Output
 
-The pipeline generates a file at `data/output.json` that contains a list of JSON objects, one for each restaurant. Each object contains the following insights:
+The script generates a visually interactive dashboard that can be accessed through a web browser. The dashboard provides a comprehensive overview of the analysis for each restaurant, including:
 
-- `sentiment_summary`: A summary of the sentiment distribution.
-- `top_themes`: The top positive and negative themes.
-- `aspect_based_sentiment`: The sentiment scores for each aspect.
-- `ai_summary`: A natural language summary of the insights.
-- `time_trends`: The daily trends of positive and negative reviews.
-- `alerts`: A list of alerts for negative review spikes and repeated issues.
-- `word_cloud_data`: The data needed to generate a word cloud.
-- `health_score`: The overall health score of the restaurant.
+-   **Sentiment Summary**: A breakdown of positive, negative, and neutral reviews with exact counts and percentages.
+-   **Aspect-Based Sentiment**: Scores for key aspects like Taste, Delivery, and Price.
+-   **Top Themes**: The most frequent positive and negative topics.
+-   **Time-Series Trends**: A chart showing the daily volume of positive and negative reviews.
+-   **Alerts**: Automatic detection of negative spikes and recurring issues.
+-   **AI-Generated Summary**: A natural language summary of the key insights.
+-   **Word Cloud**: A visual representation of the most common topics.
+-   **Health Score**: An overall score based on sentiment, rating, and delivery performance.

@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --background-color: #f7f9fc;
+    --card-background: #ffffff;
+    --text-color: #34495e;
+    --heading-color: #2c3e50;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+main {
+    padding: 2rem;
+}
+
+.restaurant-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.restaurant-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--heading-color);
+    color: white;
+    padding: 1.5rem;
+}
+
+.restaurant-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+}
+
+.restaurant-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.restaurant-title .health-score {
+    font-size: 1.2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.analysis-section {
+    background-color: #fdfdfd;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #eef2f7;
+}
+
+.analysis-section h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.sentiment-summary .sentiment-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.sentiment-item span:first-child {
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.9rem;
+}
+
+.positive .progress { background-color: #2ecc71; }
+.negative .progress { background-color: #e74c3c; }
+.neutral .progress { background-color: #95a5a6; }
+
+.aspect-sentiment .aspect-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.aspect-item .score-bar {
+    width: 60%;
+    height: 10px;
+    background: linear-gradient(90deg, #e74c3c, #f1c40f, #2ecc71);
+    border-radius: 5px;
+    position: relative;
+}
+
+.aspect-item .score-marker {
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    background-color: var(--heading-color);
+    border-radius: 2px;
+    top: -2px;
+    transform: translateX(-2px);
+}
+
+.top-themes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.top-themes li {
+    padding: 0.3rem;
+    border-radius: 5px;
+    margin-bottom: 0.3rem;
+}
+
+.top-themes .positive-theme { background-color: rgba(46, 204, 113, 0.1); border-right: 4px solid #2ecc71; }
+.top-themes .negative-theme { background-color: rgba(231, 76, 60, 0.1); border-right: 4px solid #e74c3c; }
+
+.alerts ul {
+    list-style-type: '⚠️';
+    padding-right: 1.5rem;
+}
+
+.alerts li {
+    margin-bottom: 0.5rem;
+    color: #c0392b;
+    font-weight: bold;
+}
+
+.ai-summary p {
+    font-style: italic;
+    background-color: rgba(78, 205, 196, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-right: 4px solid var(--secondary-color);
+}
+
+canvas {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
