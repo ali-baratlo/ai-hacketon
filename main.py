@@ -6,22 +6,25 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import arabic_reshaper
 from bidi.algorithm import get_display
 import re
+import http.server
+import socketserver
+import os
 
 # ----------------- Configuration -----------------
 
 INPUT_FILE = 'data/restaurants.json'
-OUTPUT_FILE = 'data/output.json'
+OUTPUT_FILE = 'ui/output.js'
 
 SENTIMENT_MODEL = "HooshvareLab/bert-fa-base-uncased-sentiment-deepsentipers-binary"
 SUMMARIZATION_MODEL = "persiannlp/mt5-small-parsinlu-squad-reading-comprehension"
 
 ASPECT_KEYWORDS = {
-    "taste": ["طعم", "مزه", "خوشمزه", "بدمزه", "بی‌مزه", "شور", "شیرین", "ترش"],
-    "delivery": ["پیک", "ارسال", "رسیدن", "دیر", "زود", "سریع", "تاخیر", "داغ", "سرد"],
-    "packaging": ["بسته‌بندی", "جعبه", "ظرف", "بسته", "پلمپ", "شیک", "تمیز", "کثیف"],
-    "price": ["قیمت", "گران", "ارزان", "منصفانه", "تخفیف"],
-    "portion": ["حجم", "مقدار", "کم", "زیاد", "کافی", "سیر"],
-    "service": ["سرویس", "پشتیبانی", "پاسخگویی", "برخورد", "مودب", "بداخلاق"]
+    "taste": ["طعم", "مزه", "خوشمزه", "بدمزه", "بی‌مزه", "شور", "شیرین", "ترش", "لذیذ", "عالی", "بی‌نظیر", "فوق‌العاده", "تازه", "ترد", "آبدار", "خوب", "سوخته", "خام", "کهنه", "چرب", "خشک", "مونده"],
+    "delivery": ["پیک", "ارسال", "رسیدن", "دیر", "زود", "سریع", "تاخیر", "داغ", "سرد", "به‌موقع", "گرم", "یخ", "یخزده", "طولانی", "کند"],
+    "packaging": ["بسته‌بندی", "جعبه", "ظرف", "بسته", "پلمپ", "شیک", "تمیز", "کثیف", "مرتب", "نامرتب", "پاره", "ریخته", "باز", "له", "خراب", "حرفه‌ای", "مناسب"],
+    "price": ["قیمت", "گران", "ارزان", "منصفانه", "تخفیف", "گرون", "بالا", "زیاد", "مناسب", "به‌صرفه"],
+    "portion": ["حجم", "مقدار", "کم", "زیاد", "کافی", "سیر", "بزرگ", "کوچک", "پر", "خالی", "ناکافی"],
+    "service": ["سرویس", "پشتیبانی", "پاسخگویی", "برخورد", "مودب", "بداخلاق", "محترم", "خوش‌برخورد", "سریع", "بی‌ادب", "بی‌احترام", "کند"]
 }
 
 PERSIAN_STOPWORDS = [
@@ -164,7 +167,7 @@ def generate_ai_summary(themes, alerts, trends, summarization_pipeline):
     summary = summarization_pipeline(input_text, max_length=200, do_sample=False)[0]['generated_text']
     return summary
 
-def main():
+def run_analysis():
     print("Starting AI pipeline...")
     data = load_data(INPUT_FILE)
     print("Data loaded successfully.")
@@ -197,6 +200,9 @@ def main():
         total_reviews = len(restaurant_reviews)
         sentiment_summary = {
             "total_reviews": total_reviews,
+            "positive_count": int(sentiment_counts.get('positive', 0)),
+            "negative_count": int(sentiment_counts.get('negative', 0)),
+            "neutral_count": int(sentiment_counts.get('neutral', 0)),
             "positive_percent": int((sentiment_counts.get('positive', 0) / total_reviews) * 100),
             "negative_percent": int((sentiment_counts.get('negative', 0) / total_reviews) * 100),
             "neutral_percent": int((sentiment_counts.get('neutral', 0) / total_reviews) * 100)
@@ -227,10 +233,20 @@ def main():
         }
         all_results.append(result)
 
+    output_js = f"const restaurantData = {json.dumps(all_results, ensure_ascii=False, indent=4)};"
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(all_results, f, ensure_ascii=False, indent=4)
+        f.write(output_js)
 
     print(f"Analysis complete. Results saved to {OUTPUT_FILE}")
 
+def start_server():
+    PORT = 8000
+    os.chdir('ui')
+    Handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        print(f"Serving at http://localhost:{PORT}")
+        httpd.serve_forever()
+
 if __name__ == "__main__":
-    main()
+    run_analysis()
+    start_server()
