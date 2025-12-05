@@ -5,7 +5,7 @@ from transformers import pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
 from openai import OpenAI
-from datetime import datetime
+import random
 
 # ----------------- Configuration -----------------
 INPUT_FILE = 'data/restaurants.json'  # فایل ورودی JSON
@@ -95,6 +95,41 @@ def generate_ai_summary(restaurant_name, comments):
     except Exception as e:
         return f"خلاصه تولید نشد: {str(e)}"
 
+
+def generate_ai_pros_cons(comments):
+    client = OpenAI(
+        base_url='https://api.gapgpt.app/v1',
+        api_key='sk-R2PMlOqxTPoQR74fGogg7ioTuKndV3rQ6GZBT2Sq9Wl8oltS'
+    )
+    n = min(15, len(comments))
+    sample = "\n".join([f"- {c}" for c in random.sample(comments, n)])
+    prompt = f"""
+    حداکثر ۳ ویژگی مثبت و ۳ ویژگی منفی از روی نظرات این رستوران استخراج کن.
+    هر ویژگی حداکثر ۲ کلمه باشه.
+    
+    خروجی رو به این فرمت بده:
+    positive: first,second,third
+    negative: first,second,third
+
+    نظرات:
+    {sample}
+    """
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=150,
+            temperature=0.7
+        )
+        result_lines = response.choices[0].message.content.strip().splitlines()
+        positive = result_lines[0].split(',')
+        negative = result_lines[0].split(',')
+        return positive, negative
+
+    except Exception as e:
+        error = f'خطا در ایجاد ویژگی‌های مثبت و منفی {str(e)}'
+        return error, error
+
 def calculate_health_score(pos_percent, rating, delivery_score):
     return min(100, int(pos_percent * 0.6 + (rating / 5 * 100) * 0.3 + delivery_score * 100 * 0.1))
 
@@ -122,7 +157,9 @@ for rid, info in restaurants.items():
     neg_count = len(df[df['sentiment'] == 'negative'])
     
     aspect_scores = analyze_aspects(df['processed_text'], df['sentiment'])
-    
+
+    pros, cons = generate_ai_pros_cons(df['comment_text'].tolist())
+
     result = {
         "restaurant_id": rid,
         "restaurant_name": info['name'],
@@ -139,8 +176,8 @@ for rid, info in restaurants.items():
             "negative_percentage": round(neg_count / total * 100, 1)
         },
         
-        "main_positive_topics": extract_keywords(df, 'positive', 6),
-        "main_negative_topics": extract_keywords(df, 'negative', 6),
+        "main_positive_topics": pros,
+        "main_negative_topics": cons,
         
         "aspect_based_analysis": {
             "taste": aspect_scores['taste'],
