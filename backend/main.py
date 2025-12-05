@@ -122,8 +122,8 @@ def generate_ai_pros_cons(comments):
             temperature=0.7
         )
         result_lines = response.choices[0].message.content.strip().splitlines()
-        positive = result_lines[0].split(',')
-        negative = result_lines[0].split(',')
+        positive = result_lines[0].split(':')[1].split(',')
+        negative = result_lines[1].split(':')[1].split(',')
         return positive, negative
 
     except Exception as e:
