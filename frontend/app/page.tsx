@@ -1,4 +1,4 @@
-import { RestaurantDetails } from "@/components/restaurant-details"
+import { redirect } from "next/navigation"
 
 const restaurantData = {
   restaurant_id: 1,
@@ -31,9 +31,5 @@ const restaurantData = {
 }
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-background py-8 px-4">
-      <RestaurantDetails restaurant={restaurantData} />
-    </main>
-  )
+  redirect("/restaurant/1")
 }

@@ -4,3 +4,6 @@
 
 # node modules
 frontend/node_modules/
+
+# next build fiels
+frontend/.next
