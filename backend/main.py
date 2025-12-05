@@ -8,8 +8,8 @@ from openai import OpenAI
 from datetime import datetime
 
 # ----------------- Configuration -----------------
-INPUT_FILE = 'data/restaurants2.json'  # فایل ورودی JSON
-OUTPUT_FILE = 'output2.json'           # خروجی دقیقاً طبق خواسته تو
+INPUT_FILE = 'data/restaurants.json'  # فایل ورودی JSON
+OUTPUT_FILE = 'output.json'           # خروجی دقیقاً طبق خواسته تو
 
 SENTIMENT_MODEL = "HooshvareLab/bert-fa-base-uncased-sentiment-deepsentipers-binary"
 
