@@ -19,7 +19,7 @@ The project is designed to run locally. The Python script will perform a one-tim
 -   A modern web browser that can run local JavaScript files.
 -   [Python 3.8+](https://www.python.org/downloads/) installed on your machine.
 
-### Steps
+### Option 1: Running with Docker (Recommended)
 
 1.  **Install Dependencies:**
     Open a terminal and install the required Python packages:

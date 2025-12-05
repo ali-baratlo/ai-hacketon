@@ -188,7 +188,7 @@ def generate_ai_summary_external(restaurant_name, reviews_df):
 
     return summary.strip()
 
-def main():
+def run_analysis():
     print("Starting AI pipeline...")
     data = load_data(INPUT_FILE)
     print("Data loaded successfully.")
@@ -262,5 +262,14 @@ def main():
 
     print(f"Analysis complete. Results saved to {OUTPUT_FILE}")
 
+def start_server():
+    PORT = 8000
+    os.chdir('ui')
+    Handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        print(f"Serving at http://localhost:{PORT}")
+        httpd.serve_forever()
+
 if __name__ == "__main__":
-    main()
+    run_analysis()
+    start_server()
