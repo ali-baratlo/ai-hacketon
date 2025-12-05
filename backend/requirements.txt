@@ -8,3 +8,4 @@ scikit-learn
 arabic-reshaper
 python-bidi
 torch
+openai
