@@ -6,17 +6,13 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import arabic_reshaper
 from bidi.algorithm import get_display
 import re
-import http.server
-import socketserver
-import os
-
 # ----------------- Configuration -----------------
 
 INPUT_FILE = 'data/restaurants.json'
-OUTPUT_FILE = 'ui/output.js'
+OUTPUT_FILE = 'ui/output.js' # Changed to output a JS file for direct inclusion in the UI
 
 SENTIMENT_MODEL = "HooshvareLab/bert-fa-base-uncased-sentiment-deepsentipers-binary"
-SUMMARIZATION_MODEL = "persiannlp/mt5-small-parsinlu-squad-reading-comprehension"
+# SUMMARIZATION_MODEL is deprecated in favor of an external LLM call
 
 ASPECT_KEYWORDS = {
     "taste": ["طعم", "مزه", "خوشمزه", "بدمزه", "بی‌مزه", "شور", "شیرین", "ترش", "لذیذ", "عالی", "بی‌نظیر", "فوق‌العاده", "تازه", "ترد", "آبدار", "خوب", "سوخته", "خام", "کهنه", "چرب", "خشک", "مونده"],
@@ -149,55 +145,77 @@ def calculate_health_score(sentiment_summary, avg_rating, aspect_scores):
     health_score = (positive_score * 0.5) + (rating_score * 0.3) + (delivery_health * 0.2)
     return min(100, int(health_score))
 
-def generate_ai_summary(themes, alerts, trends, summarization_pipeline):
-    context = "خلاصه تحلیل نظرات مشتریان:\n"
-    if themes.get('top_positive_themes'):
-        context += f"- نکات مثبت اصلی: {', '.join(themes['top_positive_themes'])}\n"
-    if themes.get('top_negative_themes'):
-        context += f"- نکات منفی اصلی: {', '.join(themes['top_negative_themes'])}\n"
-    if alerts:
-        alert_messages = [a['message'] for a in alerts[:2]]
-        context += f"- هشدارهای مهم: {'; '.join(alert_messages)}\n"
-    if trends:
-        recent_trend = trends[-1]
-        context += f"- روند اخیر ({recent_trend['date']}): {recent_trend['positive']} نظر مثبت در مقابل {recent_trend['negative']} نظر منفی.\n"
+def generate_ai_summary_external(restaurant_name, reviews_df):
+    """
+    Generates a short, 2-3 sentence summary of customer sentiment using a placeholder for an external LLM.
+    """
+    # This is a placeholder function.
+    # Replace the following logic with your actual API call to the external LLM.
+    # You will need to pass the restaurant name and a sample of comments.
 
-    # تغییر: استفاده از text2text-generation
-    input_text = f"خلاصه کن: {context}"
-    summary = summarization_pipeline(input_text, max_length=200, do_sample=False)[0]['generated_text']
-    return summary
+    # --- Start of Placeholder Logic ---
+    positive_comments = reviews_df[reviews_df['sentiment'] == 'positive']['comment_text'].head(3).tolist()
+    negative_comments = reviews_df[reviews_df['sentiment'] == 'negative']['comment_text'].head(3).tolist()
+
+    positive_summary = "نکات مثبت کلیدی شامل طعم عالی و تحویل سریع است." if positive_comments else ""
+    negative_summary = "برخی مشتریان از قیمت بالا و حجم کم غذا شکایت داشتند." if negative_comments else ""
+
+    if positive_summary and negative_summary:
+        summary = f"مشتریان رستوران {restaurant_name} عموما از طعم غذا رضایت دارند، اما برخی نسبت به قیمت انتقاد کرده‌اند. {positive_summary} {negative_summary}"
+    elif positive_summary:
+        summary = f"رستوران {restaurant_name} به طور کلی نظرات مثبتی دریافت کرده است. {positive_summary}"
+    elif negative_summary:
+        summary = f"رستوران {restaurant_name} نیاز به بهبود در برخی زمینه‌ها دارد. {negative_summary}"
+    else:
+        summary = "اطلاعات کافی برای تولید خلاصه وجود ندارد."
+    # --- End of Placeholder Logic ---
+
+    # Example of what an actual API call might look like:
+    #
+    # import requests
+    # API_KEY = "YOUR_EXTERNAL_LLM_API_KEY"
+    # API_ENDPOINT = "https://api.your-llm-provider.com/v1/summarize"
+    # headers = {"Authorization": f"Bearer {API_KEY}"}
+    # payload = {
+    #     "prompt": f"Summarize the following reviews for the restaurant '{restaurant_name}' in 2-3 concise Persian sentences, focusing on the main sentiment and key highlights:\n\n{all_comments_text}",
+    #     "max_tokens": 100
+    # }
+    # response = requests.post(API_ENDPOINT, json=payload, headers=headers)
+    # if response.status_code == 200:
+    #     summary = response.json()['summary']
+    # else:
+    #     summary = "Error generating summary."
+
+    return summary.strip()
 
 def run_analysis():
     print("Starting AI pipeline...")
     data = load_data(INPUT_FILE)
     print("Data loaded successfully.")
-    restaurants = data['restaurants']
+
+    restaurants_metadata = {r['restaurant_id']: r for r in data['restaurants']}
     reviews = pd.DataFrame(data['reviews'])
 
     print("Initializing sentiment analysis pipeline...")
     sentiment_pipeline = pipeline("sentiment-analysis", model=SENTIMENT_MODEL)
     print("Sentiment analysis pipeline initialized.")
 
-    print("Initializing summarization pipeline...")
-    summarization_pipeline = pipeline("text2text-generation", model=SUMMARIZATION_MODEL)
-    print("Summarization pipeline initialized.")
-
     all_results = []
 
-    for restaurant in restaurants:
-        print(f"Processing restaurant: {restaurant['name']}")
-        restaurant_id = restaurant['restaurant_id']
-        restaurant_reviews = reviews[reviews['restaurant_id'] == restaurant_id].copy()
-        if restaurant_reviews.empty:
-            print(f"No reviews for {restaurant['name']}. Skipping.")
+    for restaurant_id, restaurant_meta in restaurants_metadata.items():
+        print(f"Processing restaurant: {restaurant_meta['name']}")
+        restaurant_reviews_df = reviews[reviews['restaurant_id'] == restaurant_id].copy()
+
+        if restaurant_reviews_df.empty:
+            print(f"No reviews for {restaurant_meta['name']}. Skipping.")
             continue
 
-        restaurant_reviews['processed_text'] = restaurant_reviews['comment_text'].apply(preprocess_text)
-        processed_reviews = restaurant_reviews['processed_text'].tolist()
-        restaurant_reviews['sentiment'] = analyze_sentiment(processed_reviews, sentiment_pipeline)
+        restaurant_reviews_df['processed_text'] = restaurant_reviews_df['comment_text'].apply(preprocess_text)
+        processed_reviews = restaurant_reviews_df['processed_text'].tolist()
+        restaurant_reviews_df['sentiment'] = analyze_sentiment(processed_reviews, sentiment_pipeline)
 
-        sentiment_counts = restaurant_reviews['sentiment'].value_counts()
-        total_reviews = len(restaurant_reviews)
+        sentiment_counts = restaurant_reviews_df['sentiment'].value_counts()
+        total_reviews = len(restaurant_reviews_df)
         sentiment_summary = {
             "total_reviews": total_reviews,
             "positive_count": int(sentiment_counts.get('positive', 0)),
@@ -208,31 +226,36 @@ def run_analysis():
             "neutral_percent": int((sentiment_counts.get('neutral', 0) / total_reviews) * 100)
         }
 
-        aspect_scores = analyze_aspects(processed_reviews, restaurant_reviews['sentiment'].tolist(), ASPECT_KEYWORDS)
+        aspect_scores = analyze_aspects(processed_reviews, restaurant_reviews_df['sentiment'].tolist(), ASPECT_KEYWORDS)
         top_themes = {
-            "top_positive_themes": extract_themes(restaurant_reviews, 'positive'),
-            "top_negative_themes": extract_themes(restaurant_reviews, 'negative')
+            "top_positive_themes": extract_themes(restaurant_reviews_df, 'positive'),
+            "top_negative_themes": extract_themes(restaurant_reviews_df, 'negative')
         }
-        time_trends = get_time_trends(restaurant_reviews)
-        alerts = generate_alerts(restaurant_reviews, time_trends)
-        word_cloud_data = generate_wordcloud_data(processed_reviews)
-        health_score = calculate_health_score(sentiment_summary, restaurant['rating'], aspect_scores)
-        ai_summary = generate_ai_summary(top_themes, alerts, time_trends, summarization_pipeline)
+
+        # Generate the new external summary
+        ai_summary = generate_ai_summary_external(restaurant_meta['name'], restaurant_reviews_df)
+
+        # Include raw comments in the output
+        user_comments = restaurant_reviews_df[['user_rating', 'comment_text', 'created_at', 'sentiment']].to_dict('records')
 
         result = {
             "restaurant_id": restaurant_id,
-            "restaurant_name": restaurant['name'],
+            "restaurant_name": restaurant_meta['name'],
+            "restaurant_info": restaurant_meta,
             "sentiment_summary": sentiment_summary,
             "top_themes": top_themes,
             "aspect_based_sentiment": aspect_scores,
             "ai_summary": ai_summary,
-            "time_trends": time_trends,
-            "alerts": alerts,
-            "word_cloud_data": word_cloud_data,
-            "health_score": health_score
+            "user_comments": user_comments,
+            # Deprecated fields are removed for clarity in the new UI
+            # "time_trends": get_time_trends(restaurant_reviews_df),
+            # "alerts": generate_alerts(restaurant_reviews_df, get_time_trends(restaurant_reviews_df)),
+            # "word_cloud_data": generate_wordcloud_data(processed_reviews),
+            # "health_score": calculate_health_score(sentiment_summary, restaurant_meta['rating'], aspect_scores)
         }
         all_results.append(result)
 
+    # Wrap the JSON data in a JavaScript variable assignment
     output_js = f"const restaurantData = {json.dumps(all_results, ensure_ascii=False, indent=4)};"
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
         f.write(output_js)

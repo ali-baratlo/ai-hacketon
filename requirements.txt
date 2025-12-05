@@ -8,5 +8,3 @@ scikit-learn
 arabic-reshaper
 python-bidi
 torch
-torchvision
-torchaudio
