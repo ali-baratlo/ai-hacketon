@@ -1,0 +1,738 @@
+[
+  {
+    "restaurant_id": 1,
+    "restaurant_name": "پیتزا شب تهران شعبه ونک",
+    "category": "Pizza",
+    "location": "ونک",
+    "avg_rating": 4.3,
+    "price_range": "$$",
+    "sentiment_analysis": {
+      "total_reviews": 30,
+      "positive_count": 19,
+      "negative_count": 11,
+      "positive_percentage": 63.3,
+      "negative_percentage": 36.7
+    },
+    "main_positive_topics": [
+      "عالی",
+      "بود",
+      "طعم",
+      "خوب",
+      "کیفیت",
+      "تمیز"
+    ],
+    "main_negative_topics": [
+      "بود",
+      "سس",
+      "خیلی",
+      "پیتزا",
+      "سرد",
+      "قیمت"
+    ],
+    "aspect_based_analysis": {
+      "taste": 0.67,
+      "delivery": 0.67,
+      "packaging": 0.67,
+      "price": 0.0,
+      "portion": 0.5,
+      "service": 0.75
+    },
+    "ai_summary": "رستوران \"پیتزا شب تهران شعبه ونک\" با پیتزاهای خوش‌طعم و خمیر عالی، نظر برخی مشتریان را به خود جلب کرده است، اما مشکلاتی مانند تأخیر در تحویل و بسته‌بندی نامناسب نیز گزارش شده است. پیک سریع و مودب و طعم‌های بی‌نظیر در کنار نوسانات کیفیت خدمات، تجربه‌ای متفاوت برای مشتریان ایجاد می‌کند.",
+    "time_trends": [
+      {
+        "date": "2024-11-20",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-21",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-22",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-23",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-24",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-25",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-26",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-27",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-28",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-29",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-30",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-12-01",
+        "positive": 4,
+        "negative": 0
+      },
+      {
+        "date": "2024-12-02",
+        "positive": 2,
+        "negative": 2
+      },
+      {
+        "date": "2024-12-03",
+        "positive": 3,
+        "negative": 2
+      },
+      {
+        "date": "2024-12-04",
+        "positive": 5,
+        "negative": 1
+      }
+    ],
+    "smart_alerts": [
+      "قیمت بالا نسبت به کیفیت"
+    ],
+    "word_cloud": [
+      "عالی",
+      "بود",
+      "طعم",
+      "خوب",
+      "کیفیت",
+      "تمیز",
+      "کمی",
+      "فقط",
+      "غذا",
+      "داغ",
+      "پیک",
+      "رسید",
+      "بهترین",
+      "نه",
+      "معمولی",
+      "بود",
+      "سس",
+      "خیلی",
+      "پیتزا",
+      "سرد",
+      "قیمت",
+      "نسبت",
+      "غذا",
+      "چیز",
+      "تاخیر"
+    ],
+    "health_score": 32
+  },
+  {
+    "restaurant_id": 2,
+    "restaurant_name": "کباب‌سرای سنتی عمو حسن",
+    "category": "Traditional",
+    "location": "تجریش",
+    "avg_rating": 4.6,
+    "price_range": "$$$",
+    "sentiment_analysis": {
+      "total_reviews": 30,
+      "positive_count": 18,
+      "negative_count": 12,
+      "positive_percentage": 60.0,
+      "negative_percentage": 40.0
+    },
+    "main_positive_topics": [
+      "عالی",
+      "بود",
+      "کباب",
+      "بهترین",
+      "کیفیت",
+      "خوب"
+    ],
+    "main_negative_topics": [
+      "خوب",
+      "غذا",
+      "خشک",
+      "بود",
+      "کباب",
+      "سرد"
+    ],
+    "aspect_based_analysis": {
+      "taste": 0.2,
+      "delivery": 0.38,
+      "packaging": 1.0,
+      "price": 0.0,
+      "portion": 0.33,
+      "service": 0.5
+    },
+    "ai_summary": "\"کباب‌سرای سنتی عمو حسن با کباب‌های خوش‌طعم و چلوکبابی که خیلی‌ها آن را بهترین تهران می‌دانند، دل مشتریان را به دست آورده است. نقاط قوتی مثل کیفیت مواد اولیه، بسته‌بندی حرفه‌ای و رفتار مناسب پیک در کنار ضعف‌هایی مانند تأخیر و سرد بودن غذا، تجربه‌ای متفاوت را برای مشتریان رقم می‌زند.\"",
+    "time_trends": [
+      {
+        "date": "2024-11-20",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-21",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-22",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-23",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-24",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-25",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-26",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-27",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-28",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-29",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-30",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-12-01",
+        "positive": 1,
+        "negative": 3
+      },
+      {
+        "date": "2024-12-02",
+        "positive": 3,
+        "negative": 1
+      },
+      {
+        "date": "2024-12-03",
+        "positive": 3,
+        "negative": 2
+      },
+      {
+        "date": "2024-12-04",
+        "positive": 3,
+        "negative": 3
+      }
+    ],
+    "smart_alerts": [
+      "تاخیر در ارسال",
+      "کیفیت طعم نیاز به بررسی",
+      "قیمت بالا نسبت به کیفیت"
+    ],
+    "word_cloud": [
+      "عالی",
+      "بود",
+      "کباب",
+      "بهترین",
+      "کیفیت",
+      "خوب",
+      "خیلی",
+      "نه",
+      "استخوان",
+      "خوشمزه",
+      "داغ",
+      "همیشه",
+      "مثل",
+      "چیز",
+      "همه",
+      "خوب",
+      "غذا",
+      "خشک",
+      "بود",
+      "کباب",
+      "سرد",
+      "ولی",
+      "اومد",
+      "ناقص",
+      "سفارش"
+    ],
+    "health_score": 31
+  },
+  {
+    "restaurant_id": 3,
+    "restaurant_name": "برگرلند پاسداران",
+    "category": "Burger",
+    "location": "پاسداران",
+    "avg_rating": 4.1,
+    "price_range": "$$",
+    "sentiment_analysis": {
+      "total_reviews": 30,
+      "positive_count": 19,
+      "negative_count": 11,
+      "positive_percentage": 63.3,
+      "negative_percentage": 36.7
+    },
+    "main_positive_topics": [
+      "عالی",
+      "خوب",
+      "طعم",
+      "داغ",
+      "کیفیت",
+      "برگر"
+    ],
+    "main_negative_topics": [
+      "بود",
+      "سرد",
+      "برگر",
+      "غذا",
+      "معمولی",
+      "بالا"
+    ],
+    "aspect_based_analysis": {
+      "taste": 0.71,
+      "delivery": 0.5,
+      "packaging": 0.0,
+      "price": 0.5,
+      "portion": 0.0,
+      "service": 0.67
+    },
+    "ai_summary": "\"برگرلند پاسداران با برگرهای خوش‌طعم و سس مخصوص بی‌نظیرش نظر بسیاری از مشتریان را جلب کرده است، اما گاهی کیفیت سرویس‌دهی و دمای غذا انتقاداتی را به همراه داشته. سیب‌زمینی تازه و برگرهای آبدار نقاط قوت اصلی هستند، اما برخی از مشتریان از سرد بودن غذا و تأخیر در ارسال شکایت دارند.\"",
+    "time_trends": [
+      {
+        "date": "2024-11-20",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-21",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-22",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-23",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-24",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-25",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-26",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-27",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-28",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-29",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-30",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-12-01",
+        "positive": 4,
+        "negative": 0
+      },
+      {
+        "date": "2024-12-02",
+        "positive": 3,
+        "negative": 1
+      },
+      {
+        "date": "2024-12-03",
+        "positive": 2,
+        "negative": 3
+      },
+      {
+        "date": "2024-12-04",
+        "positive": 4,
+        "negative": 2
+      }
+    ],
+    "smart_alerts": [],
+    "word_cloud": [
+      "عالی",
+      "خوب",
+      "طعم",
+      "داغ",
+      "کیفیت",
+      "برگر",
+      "همه",
+      "متوسط",
+      "کمی",
+      "بود",
+      "سفارش",
+      "دوبار",
+      "چیز",
+      "دابل",
+      "چیزبرگر",
+      "بود",
+      "سرد",
+      "برگر",
+      "غذا",
+      "معمولی",
+      "بالا",
+      "قیمت",
+      "خشک",
+      "سوخته",
+      "رسید"
+    ],
+    "health_score": 29
+  },
+  {
+    "restaurant_id": 4,
+    "restaurant_name": "فست‌فود میرداماد",
+    "category": "Fast Food",
+    "location": "میرداماد",
+    "avg_rating": 4.4,
+    "price_range": "$$",
+    "sentiment_analysis": {
+      "total_reviews": 30,
+      "positive_count": 20,
+      "negative_count": 10,
+      "positive_percentage": 66.7,
+      "negative_percentage": 33.3
+    },
+    "main_positive_topics": [
+      "عالی",
+      "بود",
+      "متوسط",
+      "خوب",
+      "داغ",
+      "ترد"
+    ],
+    "main_negative_topics": [
+      "بود",
+      "تاخیر",
+      "زیاد",
+      "معمولی",
+      "روغن",
+      "داشت"
+    ],
+    "aspect_based_analysis": {
+      "taste": 1.0,
+      "delivery": 0.7,
+      "packaging": 0.0,
+      "price": 0.5,
+      "portion": 0.33,
+      "service": 1.0
+    },
+    "ai_summary": "رستوران \"فست‌فود میرداماد\" تجربه‌ای میان خوب و متوسط ارائه می‌دهد؛ برخی غذاها مثل ساندویچ بندری و ویژه با کیفیت بالا و طعم عالی مورد توجه قرار گرفته‌اند، اما مشکلاتی نظیر سرد بودن غذا، نان بیات و بسته‌بندی ضعیف نیز به چشم می‌خورند. قیمت مناسب و حجم زیاد از نقاط قوت این رستوران محسوب می‌شود.",
+    "time_trends": [
+      {
+        "date": "2024-11-20",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-21",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-22",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-23",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-24",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-25",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-26",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-27",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-28",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-29",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-30",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-12-01",
+        "positive": 3,
+        "negative": 1
+      },
+      {
+        "date": "2024-12-02",
+        "positive": 1,
+        "negative": 3
+      },
+      {
+        "date": "2024-12-03",
+        "positive": 5,
+        "negative": 0
+      },
+      {
+        "date": "2024-12-04",
+        "positive": 4,
+        "negative": 2
+      }
+    ],
+    "smart_alerts": [],
+    "word_cloud": [
+      "عالی",
+      "بود",
+      "متوسط",
+      "خوب",
+      "داغ",
+      "ترد",
+      "پیک",
+      "سرد",
+      "ساندویچ",
+      "نه",
+      "طعم",
+      "خوشمزه",
+      "غذا",
+      "مودب",
+      "ویژه",
+      "بود",
+      "تاخیر",
+      "زیاد",
+      "معمولی",
+      "روغن",
+      "داشت",
+      "اشتباه",
+      "قیمت",
+      "بالا",
+      "سفارش"
+    ],
+    "health_score": 33
+  },
+  {
+    "restaurant_id": 5,
+    "restaurant_name": "سوشی مستر نیاوران",
+    "category": "Japanese",
+    "location": "نیاوران",
+    "avg_rating": 4.7,
+    "price_range": "$$$$",
+    "sentiment_analysis": {
+      "total_reviews": 30,
+      "positive_count": 22,
+      "negative_count": 8,
+      "positive_percentage": 73.3,
+      "negative_percentage": 26.7
+    },
+    "main_positive_topics": [
+      "عالی",
+      "بود",
+      "خوب",
+      "تازه",
+      "سوشی",
+      "کیفیت"
+    ],
+    "main_negative_topics": [
+      "غذا",
+      "بود",
+      "تاخیر",
+      "بالا",
+      "برنج",
+      "رسید"
+    ],
+    "aspect_based_analysis": {
+      "taste": 1.0,
+      "delivery": 0.4,
+      "packaging": 1.0,
+      "price": 0.5,
+      "portion": 0.0,
+      "service": 1.0
+    },
+    "ai_summary": "رستوران \"سوشی مستر نیاوران\" با سوشی‌های تازه و باکیفیت، بسته‌بندی حرفه‌ای و تمپورا عالی تحسین مشتریان را برانگیخته است، اما قیمت بالا و برخی ایرادات جزئی مانند برنج سفت و ارسال معمولی از نقاط ضعف آن محسوب می‌شود. برای تجربه‌ای خاص از سوشی در تهران، گزینه‌ای جذاب است.",
+    "time_trends": [
+      {
+        "date": "2024-11-20",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-21",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-22",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-23",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-24",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-25",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-26",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-27",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-11-28",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-29",
+        "positive": 1,
+        "negative": 0
+      },
+      {
+        "date": "2024-11-30",
+        "positive": 0,
+        "negative": 1
+      },
+      {
+        "date": "2024-12-01",
+        "positive": 2,
+        "negative": 2
+      },
+      {
+        "date": "2024-12-02",
+        "positive": 4,
+        "negative": 0
+      },
+      {
+        "date": "2024-12-03",
+        "positive": 3,
+        "negative": 2
+      },
+      {
+        "date": "2024-12-04",
+        "positive": 5,
+        "negative": 1
+      }
+    ],
+    "smart_alerts": [],
+    "word_cloud": [
+      "عالی",
+      "بود",
+      "خوب",
+      "تازه",
+      "سوشی",
+      "کیفیت",
+      "خوشمزه",
+      "معمولی",
+      "بهترین",
+      "بندی",
+      "بسته",
+      "متوسط",
+      "گرون",
+      "بالا",
+      "قیمت",
+      "غذا",
+      "بود",
+      "تاخیر",
+      "بالا",
+      "برنج",
+      "رسید",
+      "سرد",
+      "سفارش",
+      "گرم",
+      "سفت"
+    ],
+    "health_score": 32
+  }
+]
