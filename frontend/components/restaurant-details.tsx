@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Star, ThumbsUp, ThumbsDown, AlertTriangle, TrendingUp, TrendingDown } from "lucide-react"
+import { Star, ThumbsUp, ThumbsDown, AlertTriangle, TrendingUp, TrendingDown, MapPin } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
@@ -7,17 +7,20 @@ import { Progress } from "@/components/ui/progress"
 interface Restaurant {
   restaurant_id: number
   restaurant_name: string
-  sentiment_summary: {
+  category: string
+  location: string
+  avg_rating: number
+  price_range: string
+  sentiment_analysis: {
     total_reviews: number
-    positive_percent: number
-    negative_percent: number
-    neutral_percent: number
+    positive_count: number
+    negative_count: number
+    positive_percentage: number
+    negative_percentage: number
   }
-  top_themes: {
-    top_positive_themes: string[]
-    top_negative_themes: string[]
-  }
-  aspect_based_sentiment: {
+  main_positive_topics: string[]
+  main_negative_topics: string[]
+  aspect_based_analysis: {
     taste: number
     delivery: number
     packaging: number
@@ -27,8 +30,8 @@ interface Restaurant {
   }
   ai_summary: string
   time_trends: { date: string; positive: number; negative: number }[]
-  alerts: { type: string; message: string }[]
-  word_cloud_data: { word: string; count: number }[]
+  smart_alerts: string[]
+  word_cloud: string[]
   health_score: number
 }
 
@@ -42,13 +45,6 @@ const aspectLabels: Record<string, string> = {
 }
 
 export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
-  const positiveCount = Math.round(
-    (restaurant.sentiment_summary.positive_percent / 100) * restaurant.sentiment_summary.total_reviews,
-  )
-  const negativeCount = Math.round(
-    (restaurant.sentiment_summary.negative_percent / 100) * restaurant.sentiment_summary.total_reviews,
-  )
-
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header with Image */}
@@ -62,12 +58,22 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute bottom-4 right-4 left-4 text-white">
+            <div className="flex items-center gap-2 mb-2">
+              <Badge className="bg-primary/90">{restaurant.category}</Badge>
+              <Badge variant="outline" className="text-white border-white/50">
+                {restaurant.price_range}
+              </Badge>
+            </div>
             <h1 className="text-2xl md:text-3xl font-bold">{restaurant.restaurant_name}</h1>
             <div className="flex items-center gap-4 mt-2 text-sm">
               <div className="flex items-center gap-1">
+                <MapPin className="h-4 w-4" />
+                <span>{restaurant.location}</span>
+              </div>
+              <div className="flex items-center gap-1">
                 <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                <span className="font-semibold">{restaurant.health_score}/100</span>
-                <span className="text-white/70">({restaurant.sentiment_summary.total_reviews} نظر)</span>
+                <span className="font-semibold">{restaurant.avg_rating}</span>
+                <span className="text-white/70">({restaurant.sentiment_analysis.total_reviews} نظر)</span>
               </div>
             </div>
           </div>
@@ -89,7 +95,6 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
 
       {/* Sentiment Analysis */}
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Positive Topics - Updated to use top_themes */}
         <Card className="border-green-200 bg-green-50/50 dark:bg-green-950/20 dark:border-green-900">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-green-700 dark:text-green-400">
@@ -99,26 +104,25 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
-              {restaurant.top_themes.top_positive_themes.slice(0, 3).map((topic, index) => (
+              {restaurant.main_positive_topics.map((topic, index) => (
                 <Badge
                   key={index}
                   variant="secondary"
                   className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-sm px-3 py-1"
                 >
-                  {topic}
+                  {topic.trim()}
                 </Badge>
               ))}
             </div>
             <div className="mt-4 flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-green-600" />
               <span className="text-sm text-green-700 dark:text-green-400">
-                {restaurant.sentiment_summary.positive_percent}% نظرات مثبت
+                {restaurant.sentiment_analysis.positive_percentage}% نظرات مثبت
               </span>
             </div>
           </CardContent>
         </Card>
 
-        {/* Negative Topics - Updated to use top_themes */}
         <Card className="border-red-200 bg-red-50/50 dark:bg-red-950/20 dark:border-red-900">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-red-700 dark:text-red-400">
@@ -128,34 +132,33 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-2">
-              {restaurant.top_themes.top_negative_themes.slice(0, 3).map((topic, index) => (
+              {restaurant.main_negative_topics.map((topic, index) => (
                 <Badge
                   key={index}
                   variant="secondary"
                   className="bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 text-sm px-3 py-1"
                 >
-                  {topic}
+                  {topic.trim()}
                 </Badge>
               ))}
             </div>
             <div className="mt-4 flex items-center gap-2">
               <TrendingDown className="h-4 w-4 text-red-600" />
               <span className="text-sm text-red-700 dark:text-red-400">
-                {restaurant.sentiment_summary.negative_percent}% نظرات منفی
+                {restaurant.sentiment_analysis.negative_percentage}% نظرات منفی
               </span>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Aspect Analysis - Updated to use aspect_based_sentiment */}
       <Card>
         <CardHeader>
           <CardTitle>تحلیل جنبه‌های مختلف</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4">
-            {Object.entries(restaurant.aspect_based_sentiment).map(([aspect, score]) => (
+            {Object.entries(restaurant.aspect_based_analysis).map(([aspect, score]) => (
               <div key={aspect} className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">{aspectLabels[aspect]}</span>
@@ -170,8 +173,7 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
 
       {/* Smart Alerts & Health Score */}
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Smart Alerts - Updated to use alerts array with type/message */}
-        {restaurant.alerts.length > 0 && (
+        {restaurant.smart_alerts.length > 0 && (
           <Card className="border-amber-200 bg-amber-50/50 dark:bg-amber-950/20 dark:border-amber-900">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
@@ -181,10 +183,10 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
-                {restaurant.alerts.map((alert, index) => (
+                {restaurant.smart_alerts.map((alert, index) => (
                   <li key={index} className="flex items-center gap-2 text-amber-800 dark:text-amber-200">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                    {alert.message}
+                    {alert}
                   </li>
                 ))}
               </ul>
@@ -236,41 +238,34 @@ export function RestaurantDetails({ restaurant }: { restaurant: Restaurant }) {
         </Card>
       </div>
 
-      {/* Word Cloud Section - Added word cloud display */}
       <Card>
         <CardHeader>
           <CardTitle>کلمات پرتکرار</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
-            {restaurant.word_cloud_data.map((item, index) => (
-              <Badge
-                key={index}
-                variant="outline"
-                className="text-sm px-3 py-1"
-                style={{ fontSize: `${Math.min(0.75 + item.count * 0.1, 1.25)}rem` }}
-              >
-                {item.word} ({item.count})
+            {restaurant.word_cloud.map((word, index) => (
+              <Badge key={index} variant="outline" className="text-sm px-3 py-1">
+                {word}
               </Badge>
             ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Stats Summary - Updated to use sentiment_summary */}
       <Card>
         <CardContent className="pt-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="space-y-1">
-              <p className="text-3xl font-bold text-primary">{restaurant.sentiment_summary.total_reviews}</p>
+              <p className="text-3xl font-bold text-primary">{restaurant.sentiment_analysis.total_reviews}</p>
               <p className="text-sm text-muted-foreground">تعداد نظرات</p>
             </div>
             <div className="space-y-1">
-              <p className="text-3xl font-bold text-green-600">{positiveCount}</p>
+              <p className="text-3xl font-bold text-green-600">{restaurant.sentiment_analysis.positive_count}</p>
               <p className="text-sm text-muted-foreground">نظرات مثبت</p>
             </div>
             <div className="space-y-1">
-              <p className="text-3xl font-bold text-red-600">{negativeCount}</p>
+              <p className="text-3xl font-bold text-red-600">{restaurant.sentiment_analysis.negative_count}</p>
               <p className="text-sm text-muted-foreground">نظرات منفی</p>
             </div>
             <div className="space-y-1">
